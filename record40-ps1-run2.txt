@@ -1,0 +1,60 @@
+### CMD: .\make_sample.ps1
+Created seven fictional name-fixture files in two folders. No real media.
+### EXIT: 0
+
+### CMD: .\make_sample.ps1
+Stopped: Sample path exists. Nothing replaced.
+### EXIT: 1
+
+### CMD: .\takeoutcheck.ps1 report .\takeout-sample
+No candidate: album-a/missing.jpg
+Candidate: album-a/one.jpg -> album-a/one.jpg.supplemental-metadata.json
+Candidate: album-a/two(1).jpg -> album-a/two.jpg.supplemental-metadata(1).json
+No candidate: album-b/one.jpg
+Unpaired JSON: album-a/metadata.json
+Media names selected: 4
+JSON names found: 3
+Unambiguous candidate pairs: 2
+Media with no recognized candidate: 2
+Media with ambiguous candidates: 0
+JSON not in an unambiguous pair: 1
+Names only: no JSON parsed, no media decoded, no dates or completeness verified.
+Unpaired JSON may be album metadata or an unsupported name, not missing media.
+No write code is used by this checker. Keep private paths and names private.
+### EXIT: 1
+
+### CMD: .\test_takeoutcheck.ps1
+ok 1 - new setup succeeds
+ok 2 - repeat setup refuses and preserves all bytes and mtimes
+ok 3 - fictional export reports review status
+ok 4 - counts four media and three JSON names
+ok 5 - two sibling supplemental candidates recognized
+ok 6 - same filename in different folder cannot borrow sidecar
+ok 7 - missing recognized candidate listed
+ok 8 - album metadata not called orphaned photo
+ok 9 - all fixture bytes and mtimes unchanged by report
+ok 10 - classic sibling candidate status0
+ok 11 - status0 explicitly does not validate contents
+ok 12 - invalid JSON still only name candidate with honest disclaimer
+ok 13 - multiple names ambiguous, no guessed winner
+ok 14 - two media claiming one truncated sidecar both ambiguous
+ok 15 - limited46character candidate supported
+ok 16 - classic duplicate-marker candidate supported
+ok 17 - unknown suffix stays unresolved
+ok 18 - empty tree is not successful export proof
+ok 19 - JSON-only tree review status
+ok 20 - case differences not silently paired
+ok 21 - hidden filename candidates included
+ok 22 - unsupported extension not counted as selected media
+ok 23 - missing root refuses status2
+ok 24 - regular-file root refuses status2
+ok 25 - setup existing file preserved
+ok 26 - parent traversal refuses before normalization
+ok 27 - hardlink refused and outside bytes unchanged
+ok 28 - file symlink refuses
+ok 29 - directory root link refuses
+ok 30 - recursive directory loop refuses
+ok 31 - dangling link refuses
+SKIP: Unix named pipe not applicable
+Results: 31 checks, 0 failures, 1 skipped groups
+### EXIT: 0
